@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  font-family: 'Winter';
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@font-face {
+  font-family: 'Winter';
+  src: url('../../assets/fonts/WinterSansTrial-ExtraBold.otf');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Winter';
+  src: url('../../assets/fonts/WinterSansTrial-ExtraLight.otf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+body {
+  background: #03161C;
+}
+
+.wrapper {
+  overflow-x: hidden;
+  // background: url('../../assets/images/background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.container {
+  width: 1150px;
+  margin: 0 auto;
+}
+
+.primary-button {
+  font-size: 16px;
+  color: #000;
+  font-weight: 900;
+  background: #3696CC;
+  border-radius: 25px;
+  padding: 12px 40px;
+  margin: 10px;
+  border: none;
+}
+
+.page-title {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.map-button {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: none;
+  border-radius: 12px;
+  img {
+    height: 60%;
+    object-fit: cover;
+  }
+}
+
+section {
+  margin: 20px 0;
+}
+
+@media (min-width: 1080px) and (max-width: 1350px) {
+  .container {
+    width: 860px;
+  }
+}
+
+@media (min-width: 1700px ) {
+  .container {
+    width: 1440px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    width: 1730px;
+  }
+}
+
+@media (max-width: 1079px) {
+  .container {
+    width: 90vw;
+  }
+  .page-title {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,54 @@
+.register, .login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px 0 100px;
+  &__title {
+    font-size: 32px;
+  }
+  &__form {
+    &__input {
+      font-size: 24px;
+      display: block;
+      width: 440px;
+      padding: 8px 20px;
+      margin: 10px 0 20px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #FFFFFF;
+      &::placeholder{
+        color: #ffffffa4;
+      }
+    }
+  }
+  &__text {
+    font-size: 24px;
+    a {
+      text-decoration: underline;
+    }
+  }
+  &__button_primary {
+    display: block;
+    border: none;
+    margin: 25px auto 15px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .register, .login {
+    padding: 0 15px;
+    &__title {
+      font-size: 24px;
+    }
+    &__form {
+      width: 100%;
+      &__input {
+        font-size: 20px;
+        width: 100%;
+      }
+    }
+    &__text {
+      font-size: 16px;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4352fd32.css",
+    "main.js": "/static/js/main.f4dd4b6b.js",
+    "static/media/background.jpg": "/static/media/background.0c35973764ac4df9ec06.jpg",
+    "static/media/fingers.gif": "/static/media/fingers.54f0f3e4201e9c1841d4.gif",
+    "static/media/WinterSansTrial-ExtraBold.otf": "/static/media/WinterSansTrial-ExtraBold.3c4c6005601dd6f69a0d.otf",
+    "static/media/WinterSansTrial-ExtraLight.otf": "/static/media/WinterSansTrial-ExtraLight.6c3663e20e5f9646ef67.otf",
+    "static/media/profile.png": "/static/media/profile.a385b346f2e9995b2f5d.png",
+    "index.html": "/index.html",
+    "main.4352fd32.css.map": "/static/css/main.4352fd32.css.map",
+    "main.f4dd4b6b.js.map": "/static/js/main.f4dd4b6b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4352fd32.css",
+    "static/js/main.f4dd4b6b.js"
+  ]
+}
