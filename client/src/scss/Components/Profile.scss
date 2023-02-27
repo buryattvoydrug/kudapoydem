@@ -66,3 +66,9 @@
   border-radius: 5px;
   text-align: center;
 }
+
+@media (max-width: 1079px) {
+  .new-post__form__input {
+    width: 100%;
+  }
+}

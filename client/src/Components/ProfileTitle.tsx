@@ -21,7 +21,7 @@ export default function ProfileTitle({userId}: {userId: string}) {
         <CSSTransition in={!!user} timeout={600} classNames="fadein" unmountOnExit>
 
         <a href={"/profile/" + user?.username} className="card-profile">
-            <img className="card-profile__image" src={user?.profilePicture ? '../images/' + user.profilePicture : require('../assets/images/profile.png')} alt="" />
+            <img className="card-profile__image" src={user?.profilePicture ? user.profilePicture : require('../assets/images/profile.png')} alt="" />
             <span className="card-profile__name">{user?.username}</span>
         </a>
         

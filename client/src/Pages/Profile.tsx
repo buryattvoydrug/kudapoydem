@@ -35,7 +35,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get("/api/posts/profile/" + username);
-      setPosts(res.data);
+      setPosts(res.data.reverse());
     }
     fetchPosts();
   },[currentUser, username])
@@ -47,19 +47,17 @@ export default function Profile() {
       desc: desc,
     };
     if (newImg) {
-      const data = new FormData();
-      const fileName = Date.now() + newImg.name;
-      data.append("name", fileName);
-      data.append("file", newImg);
-      req.profilePicture = fileName;
       try {
-        await axios.post("/api/upload", data);
-      } catch (err) {
-        console.log(err);
+        const data = new FormData();
+        data.append("file", newImg);
+        const res = await axios.post("/api/upload", data);
+        req.profilePicture = res.data.url;
+      } catch (error) {
+        console.log(error);
+        console.log('фото не загружено')
       }
     }
     try {
-      console.log(req)
       axios.put("/api/users/" + user._id, req);
       window.location.reload();
     } catch (err) {
@@ -89,44 +87,45 @@ export default function Profile() {
 
   return (
     <div className='container'>
-      <Header toExit/>
+      
       <CSSTransition in={!!currentUser} timeout={600} classNames="fadein">
-        <div>
-        <form className="profile" onSubmit={updateProfileHandler}>
-          <label htmlFor="profile__image__input">
+        <>
+          <Header toExit={currentUser?._id === user._id}/>
+          <form className="profile" onSubmit={updateProfileHandler}>
+            <label htmlFor="profile__image__input">
 
-            {newImg 
-              ? <img className='profile__image' src={URL.createObjectURL(newImg)} alt="" />
-              : <img className='profile__image' 
-                  src={currentUser?.profilePicture 
-                    ? '../images/' + currentUser.profilePicture 
-                    : require('../assets/images/profile.png')} 
-              alt="Профиль" />}
+              {newImg 
+                ? <img className='profile__image' src={URL.createObjectURL(newImg)} alt="" />
+                : <img className='profile__image' 
+                    src={currentUser?.profilePicture 
+                      ? currentUser.profilePicture 
+                      : require('../assets/images/profile.png')} 
+                alt="Профиль" />}
+              
+            </label>
+            {currentUser?._id === user._id && 
+              <input 
+                name='profile__image__input'
+                id='profile__image__input' onChange={handleChangeImg} type="file" accept=".png,.jpeg,.jpg"/>
+            }
+
+            <h1 className='profile__header'>{currentUser?.username}</h1>
+
+            {currentUser?._id === user._id 
+              ? <input className="profile__text profile__text__input" type="text" 
+                  value={desc}
+                  onChange={(e) => {
+                    setDesc(e.currentTarget.value)
+                  }}/>
+              : <p className="profile__text">{currentUser?.desc}</p>
+            }
             
-          </label>
-          {currentUser?._id === user._id && 
-            <input 
-              name='profile__image__input'
-              id='profile__image__input' onChange={handleChangeImg} type="file" accept=".png,.jpeg,.jpg"/>
-          }
+            {!!currentUser && (newImg || desc !== currentUser?.desc) &&
+              <button type='submit' className="primary-button">Сохранить изменения</button>
+            }
 
-          <h1 className='profile__header'>{currentUser?.username}</h1>
-
-          {currentUser?._id === user._id 
-            ? <input className="profile__text profile__text__input" type="text" 
-                value={desc}
-                onChange={(e) => {
-                  setDesc(e.currentTarget.value)
-                }}/>
-            : <p className="profile__text">{currentUser?.desc}</p>
-          }
-          
-          {!!currentUser && (newImg || desc !== currentUser?.desc) &&
-            <button type='submit' className="primary-button">Сохранить изменения</button>
-          }
-
-        </form>
-        </div>
+          </form>
+        </>
       </CSSTransition>
       <div className="profile-buttons">
         

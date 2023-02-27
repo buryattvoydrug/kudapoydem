@@ -23,13 +23,15 @@ export default function Header({toExit}: toExitI) {
 
   return (
     <header className='header'>
-      <a href={'/profile/' + user.username} className="header__profile">
-        <div className="header__profile__name">{user.username}</div>
-        <img src={user.profilePicture ? '../images/' + currentUser?.profilePicture : require('../assets/images/profile.png')}
-          alt="Фотография профиля" 
-          className="header__profile__img" />
-      </a>
-      <a href="/login" onClick={()=>localStorage.setItem("user", "{}")} className="header__profile__logout">выйти</a>
+      {!toExit 
+      ? <a href={'/profile/' + user.username} className="header__profile">
+          <div className="header__profile__name">{user.username}</div>
+          <img src={user.profilePicture ? currentUser?.profilePicture : require('../assets/images/profile.png')}
+            alt="Фотография профиля" 
+            className="header__profile__img" />
+        </a>
+      : <a href="/login" onClick={()=>localStorage.setItem("user", "{}")} className="header__profile__logout">выйти</a>
+      }
     </header>
   )
 }

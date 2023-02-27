@@ -21,16 +21,14 @@ export default function NewPost() {
       price: price,
     }
     if (img) {
-      const data = new FormData();
-      const fileName = Date.now() + img.name;
-      data.append("name", fileName);
-      data.append("file", img);
-      newPost.img = fileName;
-      console.log(newPost);
       try {
-        await axios.post("/api/upload", data);
-      } catch (err) {
-        console.log(err);
+        const data = new FormData();
+        data.append("file", img);
+        const res = await axios.post("/api/upload", data);
+        newPost.img = res.data.url;
+      } catch (error) {
+        console.log(error);
+        console.log('фото не загружено')
       }
     }
     try {

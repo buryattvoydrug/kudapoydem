@@ -16,7 +16,6 @@ export default function Card({type, post}: CardTypeProps) {
   const profileCardAnimation = () => {
     setFullView(!fullView)
   }
-
   return (
     <>
       {type === 'actual' &&
@@ -26,7 +25,7 @@ export default function Card({type, post}: CardTypeProps) {
           onClick={() => setFullView(!fullView)} 
           onMouseLeave={() => setFullView(false)}
           >
-        <img src={process.env.REACT_APP_URL +'../images/' + post.img} alt="" className="card__img" />
+        <img src={post.img} alt="" className="card__img" />
         
         <CSSTransition in={fullView} timeout={600} classNames="show" unmountOnExit>
           <MapButton link={post.link}/>
@@ -50,7 +49,7 @@ export default function Card({type, post}: CardTypeProps) {
       {type === 'feed' && 
       
       <div className="card list__item">
-        <img src={process.env.REACT_APP_URL +'../images/' + post.img} alt="" className="card__img" />
+        <img src={post.img} alt="" className="card__img" />
         
         <MapButton link={post.link}/>
         
@@ -74,7 +73,7 @@ export default function Card({type, post}: CardTypeProps) {
       <div className={fullView? "card list__item" : "card list__item card_profile"}
            onMouseEnter={profileCardAnimation} 
            onMouseLeave={profileCardAnimation}>
-        <img src={process.env.REACT_APP_URL +'../images/' + post.img} alt="" className="card__img" />
+        <img src={post.img} alt="" className="card__img" />
         
         <CSSTransition in={fullView} timeout={600} classNames="show" unmountOnExit>
           <MapButton link={post.link}/>
